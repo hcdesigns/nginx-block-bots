@@ -25,11 +25,13 @@ After you've included the `block.conf` file into your nginx configuration, you c
 		location / {
 		    # A bad bot has been found, return a 403 error and don't show them in logs
 		    if ($limit_bots = 1) {
+		        access_log off;
 			    return 403;
 		    }
 
 		    # Bad referer has been found. Throw 403 error to deny access for the user and don't log them
 		    if ($bad_referer = 1) {
+		        access_log off;
 			    return 403;
 		    }
 
